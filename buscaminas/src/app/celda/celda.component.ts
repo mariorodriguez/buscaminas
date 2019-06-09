@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Celda } from '../entidades/celda';
 
 @Component({
   selector: 'app-celda',
@@ -6,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./celda.component.css']
 })
 export class CeldaComponent implements OnInit {
-
+  @Input() celda: Celda;
+   
   constructor() { }
 
   ngOnInit() {
