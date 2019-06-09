@@ -4,11 +4,13 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JuegoComponent } from './juego/juego.component';
+import { CeldaComponent } from './celda/celda.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    JuegoComponent
+    JuegoComponent,
+    CeldaComponent
   ],
   imports: [
     BrowserModule,
