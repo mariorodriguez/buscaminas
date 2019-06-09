@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-fila',
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fila.component.css']
 })
 export class FilaComponent implements OnInit {
-
+  @Input() fila: any;
   constructor() { }
 
   ngOnInit() {

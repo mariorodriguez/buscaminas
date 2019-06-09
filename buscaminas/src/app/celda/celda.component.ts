@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Celda } from '../entidades/celda';
 
 @Component({
@@ -8,10 +8,20 @@ import { Celda } from '../entidades/celda';
 })
 export class CeldaComponent implements OnInit {
   @Input() celda: Celda;
-   
+  @Output() celdaClick: EventEmitter<Celda> = new EventEmitter();
+  @Output() celdaMarca: EventEmitter<Celda> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onCeldaClick(){
+    this.celdaClick.emit(this.celda);
+  }
+
+  onCeldaMarca(){
+    this.celdaMarca.emit(this.celda);
   }
 
 }
