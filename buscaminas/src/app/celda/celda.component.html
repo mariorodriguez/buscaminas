@@ -1,3 +1,6 @@
-<div class="oculta celda">
+<div class="celda" [ngClass]="{
+  'oculta': celda.estado == 0
+}">
   celda
 </div>
+<div class="celda" [class.oculta]="celda.estado == 0" ></div>
