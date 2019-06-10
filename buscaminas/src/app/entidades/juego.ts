@@ -1,4 +1,4 @@
-import { Celda } from './celda';
+import { Celda, EstadoCelda } from './celda';
 import { UtilService } from '../servicios/util.service';
 
 export enum EstadoJuego{
@@ -11,7 +11,7 @@ export enum EstadoJuego{
 export class Juego {
     estado: EstadoJuego = EstadoJuego.Inicio;
     celdasDestapadas: number = 0;
-    tablero:Celda [][]; //= [new Array(9), new Array(9)];
+    tablero:Celda [][];
     filas: number = 10;
     columnas: number = 10;
 
@@ -52,8 +52,8 @@ export class Juego {
                 col = this.utilService.obtenerNroAleatorio(this.columnas-1); 
                 celda = this.tablero[fila][col];
             }
-            while(celda.minada == false)
-            celda.minada == true;
+            while(celda.minada == true)
+            celda.minada = true;
             minas++;
             
         }
@@ -61,7 +61,42 @@ export class Juego {
         console.log(this.tablero);
     }
 
-    DestaparCelda(){
+    DestaparCelda(fila: number, col: number){
+        let fila2: number;
+        let col2 : number;
+        let celda: Celda;
+        let filaMin: number;
+        let filaMax: number;
+        let colMin: number;
+        let colMax: number;
+        let celda2: Celda;
+
+        celda = this.tablero[fila][col];
+        if(celda.minada == true){
+            // Fin juego
+        }
+
+        if(celda.estado == EstadoCelda.Oculta || celda.estado == EstadoCelda.Dudosa){
+            celda.estado = EstadoCelda.Destapada;
+            if(celda.minasCercanas == 0){
+                filaMax = this.utilService.maximo(0, fila-1);
+                filaMin = this.utilService.minimo(9, fila+1);
+                for(let i = filaMax; i>=filaMin; i--){
+                    colMax = this.utilService.maximo(0, col-1);
+                    colMin = this.utilService.minimo(9, col+1);
+                    for(let j=colMax; j>=colMin; j--){
+                        celda2 = this.tablero[i][j];
+                        if(celda.minada == false)
+                            this.DestaparCelda(i, j);
+                    }
+                }
+
+            }
+        }
+
+
+
+
 
     }
 

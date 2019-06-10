@@ -10,4 +10,18 @@ export class UtilService {
   obtenerNroAleatorio(max: number){
     return Math.round(Math.random() * max);
   }
+
+  maximo(a: number, b: number){
+    if(a > b)
+      return a;
+    else
+      return b;
+  }
+
+  minimo(a: number, b: number){
+    if(a < b)
+      return a;
+    else
+      return b;
+  }
 }
