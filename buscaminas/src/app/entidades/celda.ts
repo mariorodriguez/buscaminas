@@ -9,11 +9,15 @@ export class Celda{
     private _estado: EstadoCelda;
     private _minada: boolean;
     private _minasCercanas: number;
+    private _nroFila: number;
+    private _nroColumna: number;
 
-    constructor(){
+    constructor(fila: number, columna: number){
         this._estado = EstadoCelda.Oculta;
         this._minada = false;
         this._minasCercanas = 0;
+        this._nroFila = fila;
+        this._nroColumna = columna;
     }
 
     get estado(){
@@ -27,4 +31,21 @@ export class Celda{
     get minasCercanas(){
         return this._minasCercanas;
     }
+
+    get nroFila(){
+        return this._nroFila;
+    }
+
+    get nroColumna(){
+        return this._nroColumna;
+    }
+
+    set estado(estado: EstadoCelda){
+        this._estado = estado;
+    }
+
+    set minada(valor: boolean){
+        this._minada = valor;
+    }
+
 }
