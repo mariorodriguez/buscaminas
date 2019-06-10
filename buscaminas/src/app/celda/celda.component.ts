@@ -18,10 +18,12 @@ export class CeldaComponent implements OnInit {
 
   onCeldaClick(){
     this.celdaClick.emit(this.celda);
+    console.log(this.celda);
   }
 
   onCeldaMarca(){
     this.celdaMarca.emit(this.celda);
+    console.log("marca");
   }
 
 }

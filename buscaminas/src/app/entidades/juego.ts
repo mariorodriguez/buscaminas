@@ -14,8 +14,9 @@ export class Juego {
     tablero:Celda [][];
     filas: number = 10;
     columnas: number = 10;
+    private utilService: UtilService = new UtilService();
 
-    constructor(private utilService: UtilService){
+    constructor(){
         this.IniciarJuego();
     }
 
@@ -23,6 +24,7 @@ export class Juego {
         this.celdasDestapadas = 0;
         this.estado = EstadoJuego.Jugando;
         this.GenerarTablero();
+        this.Minar();
     }    
 
     GenerarTablero(){
@@ -73,6 +75,7 @@ export class Juego {
 
         celda = this.tablero[fila][col];
         if(celda.minada == true){
+            console.log("Perdiste - Fin del juego")
             // Fin juego
         }
 

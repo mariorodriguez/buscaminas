@@ -6,4 +6,11 @@
 <div>
   <button>Nuevo Juego</button>
 </div>
+<div class="container">
+  <div *ngFor="let fila of juego.tablero; let indice=index" class="row">
+    <div *ngFor="let col of fila; let indiceC=index" class="col">
+      <app-celda [celda]="col"></app-celda>
+    </div>
+  </div>
+</div>
 

@@ -16,7 +16,7 @@ export class JuegoComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.juego.GenerarTablero();
+    //this.juego.GenerarTablero();
     this.extraeFilas();
   }
 
