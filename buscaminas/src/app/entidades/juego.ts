@@ -84,6 +84,7 @@ export class Juego {
 
         //celda = this.tablero[fila][col];
         if(celda.minada == true){
+            this.estado = EstadoJuego.Perdido;
             console.log("Perdiste - Fin del juego")
             this.estadoSubject.next(EstadoJuego.Perdido);
         }

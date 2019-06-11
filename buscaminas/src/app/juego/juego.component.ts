@@ -16,32 +16,31 @@ export class JuegoComponent implements OnInit {
   suscripcionEstadoJuego: any;
 
   constructor(private utilService: UtilService) {
-    this.juego = new Juego();
-    this.estadoJuego$ = this.juego.suscribeEstadoJuego();
+  
+   }
+
+  ngOnInit() {
+    this.iniciar();
     this.suscripcionEstadoJuego = this.estadoJuego$.subscribe(dato => {
       console.log(dato);
       if(dato == EstadoJuego.Perdido)
         alert("Ups, Explotó una bomba, perdiste");
     })
-   }
-
-  ngOnInit() {
-    //this.juego.GenerarTablero();
-    this.extraeFilas();
-  }
-
-  extraeFilas(){
-    this.filas = [];
-    this.filas.push({nombre: "mario"})
-    this.filas.push({nombre: "juan"})
-
   }
 
   onCeldaClick(celda: Celda){
-    console.log("juegoComponent event celda click");
-    console.log(celda);
-    this.juego.DestaparCelda(celda);
+    if(this.juego.estado == EstadoJuego.Jugando)
+      this.juego.DestaparCelda(celda);
   }
 
+  nuevoJuego(){
+    this.iniciar();
+  }
+
+  iniciar(){
+    this.juego = new Juego();
+    this.estadoJuego$ = this.juego.suscribeEstadoJuego();
+
+  }
 
 }

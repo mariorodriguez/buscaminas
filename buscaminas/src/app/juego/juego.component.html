@@ -1,11 +1,17 @@
-<div>
-  <h1>
-    Buscaminas
-  </h1>
+<div class="container">
+  <div class="row">
+    <h2>Buscaminas</h2>
+  </div>
+  <div class="row">
+      <button (click)="nuevoJuego()"> Nuevo Juego</button>  
+  </div>
+  <div class="row">
+      <div class="col"></div>
+        <span>Tiempo juego: </span> <app-crono></app-crono>
+    </div>
 </div>
-<div>
-  <button>Nuevo Juego</button>
-</div>
+
+
 <div class="container">
   <div *ngFor="let fila of juego.tablero; let indice=index" class="row">
     <div *ngFor="let celdaF of fila; let indiceC=index" class="col">

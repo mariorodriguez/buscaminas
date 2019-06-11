@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { JuegoComponent } from './juego/juego.component';
 import { CeldaComponent } from './celda/celda.component';
 import { FilaComponent } from './fila/fila.component';
+import { CronoComponent } from './crono/crono.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     JuegoComponent,
     CeldaComponent,
-    FilaComponent
+    FilaComponent,
+    CronoComponent
   ],
   imports: [
     BrowserModule,

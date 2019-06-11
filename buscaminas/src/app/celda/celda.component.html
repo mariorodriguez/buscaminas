@@ -1,4 +1,6 @@
 <div (click)="onCeldaClick()" (contextmenu)="onCeldaMarca($event); false" class="celda" [ngClass]="{
   'oculta': celda.estado == 0
 }">
+<img [hidden]="celda.estado != 2" src="../../assets/imgs/flag.png" alt="" class="flag">
+<img [hidden]="celda.estado==0 || !celda.minada" src="../../assets/imgs/bomb.png" alt="" class="bomb">
 </div>

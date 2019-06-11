@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Celda } from '../entidades/celda';
+import { Celda, EstadoCelda } from '../entidades/celda';
 
 @Component({
   selector: 'app-celda',
@@ -18,12 +18,17 @@ export class CeldaComponent implements OnInit {
 
   onCeldaClick(){
     this.celdaClick.emit(this.celda);
-    console.log(this.celda);
+    
   }
 
   onCeldaMarca(){
+    if(this.celda.estado != EstadoCelda.Bandera)
+      this.celda.estado=EstadoCelda.Bandera;
+    else
+      this.celda.estado=EstadoCelda.Oculta;
+
     this.celdaMarca.emit(this.celda);
-    console.log("marca");
+    
   }
 
 }
