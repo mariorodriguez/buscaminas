@@ -8,7 +8,7 @@ import { Celda } from '../entidades/celda';
 })
 export class CeldaComponent implements OnInit {
   @Input() celda: Celda;
-  @Output() celdaClick: EventEmitter<Celda> = new EventEmitter();
+  @Output() celdaClick = new EventEmitter<Celda>();
   @Output() celdaMarca: EventEmitter<Celda> = new EventEmitter();
 
   constructor() { }

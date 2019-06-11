@@ -8,8 +8,8 @@
 </div>
 <div class="container">
   <div *ngFor="let fila of juego.tablero; let indice=index" class="row">
-    <div *ngFor="let col of fila; let indiceC=index" class="col">
-      <app-celda [celda]="col"></app-celda>
+    <div *ngFor="let celdaF of fila; let indiceC=index" class="col">
+      <app-celda (celdaClick)="onCeldaClick(celdaF)" [celda]="celdaF"></app-celda>
     </div>
   </div>
 </div>

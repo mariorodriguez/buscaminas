@@ -1,5 +1,7 @@
 import { Celda, EstadoCelda } from './celda';
 import { UtilService } from '../servicios/util.service';
+import { disableDebugTools } from '@angular/platform-browser';
+import { Subject, Observable } from 'rxjs';
 
 export enum EstadoJuego{
     Inicio = 0,
@@ -15,6 +17,8 @@ export class Juego {
     filas: number = 10;
     columnas: number = 10;
     private utilService: UtilService = new UtilService();
+    private estadoSubject = new Subject<EstadoJuego>();
+    public estadoObservable = this.estadoSubject.asObservable();
 
     constructor(){
         this.IniciarJuego();
@@ -63,20 +67,25 @@ export class Juego {
         console.log(this.tablero);
     }
 
-    DestaparCelda(fila: number, col: number){
+    DestaparCelda(celda: Celda){
+        let fila: number;
+        let col: number;
         let fila2: number;
         let col2 : number;
-        let celda: Celda;
+        //let celda: Celda;
         let filaMin: number;
         let filaMax: number;
         let colMin: number;
         let colMax: number;
         let celda2: Celda;
 
-        celda = this.tablero[fila][col];
+        fila = celda.nroFila;
+        col = celda.nroColumna;
+
+        //celda = this.tablero[fila][col];
         if(celda.minada == true){
             console.log("Perdiste - Fin del juego")
-            // Fin juego
+            this.estadoSubject.next(EstadoJuego.Perdido);
         }
 
         if(celda.estado == EstadoCelda.Oculta || celda.estado == EstadoCelda.Dudosa){
@@ -89,17 +98,13 @@ export class Juego {
                     colMin = this.utilService.minimo(9, col+1);
                     for(let j=colMax; j>=colMin; j--){
                         celda2 = this.tablero[i][j];
-                        if(celda.minada == false)
-                            this.DestaparCelda(i, j);
+                        if(celda2.minada == false)
+                            this.DestaparCelda(celda2);
                     }
                 }
 
             }
         }
-
-
-
-
 
     }
 
@@ -111,5 +116,8 @@ export class Juego {
         return Math.round(Math.random() * max);
     }
 
+    suscribeEstadoJuego(): Observable<EstadoJuego>{
+        return this.estadoObservable;
+    }
 
 }
