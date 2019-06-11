@@ -1,0 +1,18 @@
+.celda{
+    margin: 1px;
+    width: 50px;
+    height: 50px;
+}
+.oculta{
+    background-color: gray;
+}
+.destapada{
+    background-color: white;
+}
+.bandera{
+    background-image: url(../../assets/imgs/flag.png);
+}
+.bomba{
+    background-image: url(../../assets/imgs/bomb.png);
+}
+
